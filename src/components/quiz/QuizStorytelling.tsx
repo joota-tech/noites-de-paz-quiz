@@ -46,7 +46,7 @@ const QuizStorytelling = ({ onNext }: QuizStorytellingProps) => {
         transition={{ delay: 0.5 }}
         className="text-xs text-muted-foreground -mt-1"
       >
-        Mãe, educadora e criadora do método Noite Encantada
+        Mãe, educadora e criadora do método Noite de Paz
       </motion.p>
 
       <p className="text-xs font-semibold tracking-widest uppercase text-gold mb-2">
