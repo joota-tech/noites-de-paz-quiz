@@ -52,8 +52,8 @@ const questions = [
     question: "Se existisse um método simples que ajudasse seu filho a dormir com mais paz em apenas 15 minutos por noite, você testaria?",
     options: [
       { label: "A", text: "Sim, eu preciso disso", profile: "inseguro" },
-      { label: "B", text: "Com certeza, faria hoje mesmo", profile: "agitado" },
-      { label: "C", text: "Sim, quero muito noites mais tranquilas", profile: "inseguro" },
+      { label: "B", text: "Com certeza, faria hoje mesmo", profile: "inseguro" },
+      { label: "C", text: "Sim, quero muito noites mais tranquilas", profile: "agitado" },
       { label: "D", text: "Eu daria uma chance", profile: "agitado" },
     ],
   },
