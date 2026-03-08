@@ -3,6 +3,7 @@ import moonStars from "@/assets/moon-stars.png";
 
 interface QuizResultProps {
   profile: "inseguro" | "agitado";
+  onNext: () => void;
 }
 
 const profiles = {
