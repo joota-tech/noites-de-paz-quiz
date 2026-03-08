@@ -8,35 +8,34 @@ interface QuizResultProps {
 const profiles = {
   inseguro: {
     emoji: "🌙",
-    title: "Seu filho tem o perfil: Emocionalmente Inseguro",
-    subtitle: "Ele precisa sentir que está protegido para conseguir relaxar.",
+    title: "Seu filho precisa se sentir emocionalmente seguro para conseguir dormir em paz",
     description: [
-      "O seu filho demonstra sinais de insegurança emocional na hora de dormir. Isso significa que ele precisa sentir — no fundo do coração — que está seguro, amado e protegido para conseguir fechar os olhos em paz.",
-      "Crianças com esse perfil costumam ter medo do escuro, pedir para os pais ficarem por perto, precisar de contato físico para dormir e demonstrar sensibilidade emocional à noite.",
-      "Isso não é \"frescura\". É o coração dele pedindo acolhimento.",
+      "Seu filho não faz birra por mal.\nEle sente medo. Insegurança. Necessidade de proteção.",
+      "Crianças emocionalmente sensíveis precisam sentir que estão seguras — por dentro e por fora — antes de relaxar.",
     ],
-    needs: [
-      "Rituais noturnos que transmitam proteção e presença de Deus",
-      "Histórias suaves que falem de anjos, segurança e amor divino",
-      "Um momento de conexão emocional antes de dormir",
-      "Previsibilidade e constância para se sentir seguro",
+    highlights: [
+      "o medo diminui",
+      "o corpo relaxa",
+      "o sono chega com mais facilidade",
     ],
+    highlightIntro: "Quando elas se sentem protegidas:",
+    conclusion: "A boa notícia é que isso pode ser desenvolvido com estímulos certos antes de dormir.",
   },
   agitado: {
     emoji: "🔥",
-    title: "Seu filho tem o perfil: Mentalmente Agitado",
-    subtitle: "A mente dele está acelerada demais para conseguir desacelerar sozinho.",
+    title: "Seu filho tem a mente acelerada e precisa aprender a desacelerar antes de dormir",
     description: [
-      "O seu filho demonstra sinais de agitação mental na hora de dormir. Isso significa que a mente dele fica \"ligada\" demais à noite e ele não consegue desacelerar por conta própria.",
-      "Crianças com esse perfil costumam demorar para dormir, inventar desculpas para sair da cama, ficar inquietas e ter dificuldade para relaxar o corpo e a mente.",
-      "Isso não é \"birra\". É o cérebro dele pedindo ajuda para desligar.",
+      "Seu filho não resiste ao sono por teimosia.",
+      "A mente dele continua em alerta, como se o dia ainda não tivesse terminado.",
+      "Crianças mentalmente agitadas precisam de transições suaves para reduzir o ritmo mental.",
     ],
-    needs: [
-      "Uma rotina previsível que sinalize ao corpo que é hora de descansar",
-      "Histórias curtas e calmantes que reduzam os estímulos mentais",
-      "Técnicas suaves de respiração e relaxamento integradas à fé",
-      "Transição gradual entre atividade e sono",
+    highlights: [
+      "o corpo entende que é hora de descansar",
+      "a ansiedade diminui",
+      "o sono acontece naturalmente",
     ],
+    highlightIntro: "Quando o cérebro desacelera:",
+    conclusion: "Com estímulos adequados, é possível ensinar o cérebro da criança a relaxar.",
   },
 };
 
