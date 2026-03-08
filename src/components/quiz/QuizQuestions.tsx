@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import moonStars from "@/assets/moon-stars.png";
 
 const questions = [
   {
@@ -85,57 +86,89 @@ const QuizQuestions = ({ onComplete }: QuizQuestionsProps) => {
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
   return (
-    <div className="flex flex-col items-center px-5 py-8 max-w-lg mx-auto">
-      {/* Progress */}
-      <div className="w-full max-w-xs mb-2">
-        <div className="flex justify-between text-xs text-muted-foreground mb-1">
-          <span>Pergunta {currentQuestion + 1} de {questions.length}</span>
-          <span>{Math.round(progress)}%</span>
-        </div>
-        <div className="w-full h-2 bg-secondary rounded-full overflow-hidden">
-          <motion.div
-            className="h-full bg-primary rounded-full"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          />
+    <div className="flex flex-col items-center min-h-screen bg-background">
+      {/* Brand Header */}
+      <div className="w-full py-4 flex justify-center border-b border-border">
+        <div className="flex items-center gap-2">
+          <img src={moonStars} alt="Noite de Paz" className="w-8 h-8" />
+          <span className="text-sm font-bold tracking-wider uppercase text-lavender">
+            Noite de Paz™
+          </span>
         </div>
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={q.id}
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -40 }}
-          transition={{ duration: 0.35 }}
-          className="w-full mt-6"
-        >
-          <p className="text-3xl text-center mb-2">{q.emoji}</p>
-          <h2 className="font-display text-xl md:text-2xl font-bold text-foreground text-center mb-6 leading-tight">
-            {q.question}
-          </h2>
-
-          <div className="space-y-3">
-            {q.options.map((option) => (
-              <motion.button
-                key={option.label}
-                onClick={() => handleAnswer(option.profile)}
-                className="w-full text-left p-4 rounded-xl bg-card border border-border hover:border-primary hover:bg-lavender-soft transition-all duration-200 group"
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-secondary flex items-center justify-center text-xs font-bold text-secondary-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    {option.label}
-                  </span>
-                  <span className="text-sm text-foreground leading-relaxed">{option.text}</span>
-                </div>
-              </motion.button>
-            ))}
+      <div className="w-full max-w-lg mx-auto px-5 pt-6 pb-8">
+        {/* Progress bar */}
+        <div className="w-full mb-2">
+          <div className="flex justify-between text-xs text-muted-foreground mb-1.5">
+            <span>Pergunta {currentQuestion + 1} de {questions.length}</span>
+            <span>{Math.round(progress)}%</span>
           </div>
-        </motion.div>
-      </AnimatePresence>
+          <div className="w-full h-3 bg-muted rounded-full overflow-hidden">
+            <motion.div
+              className="h-full rounded-full"
+              style={{ background: "linear-gradient(135deg, hsl(270 45% 40%), hsl(260 55% 55%))" }}
+              initial={{ width: 0 }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            />
+          </div>
+        </div>
+
+        {/* Urgency note */}
+        <div className="flex items-center justify-center gap-2 mt-3 mb-4 text-xs text-rose-warm">
+          <span>⚠️</span>
+          <p>Não saia do teste — geramos apenas <span className="font-bold">um diagnóstico por pessoa</span>.</p>
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={q.id}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -40 }}
+            transition={{ duration: 0.35 }}
+            className="w-full"
+          >
+            <p className="text-4xl text-center mb-3">{q.emoji}</p>
+            <h2 className="font-display text-xl md:text-2xl font-bold text-foreground text-center mb-6 leading-tight">
+              {q.question}
+            </h2>
+
+            <div className="space-y-3">
+              {q.options.map((option) => (
+                <motion.button
+                  key={option.label}
+                  onClick={() => handleAnswer(option.profile)}
+                  className="w-full text-left p-4 rounded-2xl bg-card border-2 border-border hover:border-lavender hover:bg-lavender-soft transition-all duration-200 group shadow-sm"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      {option.label}
+                    </span>
+                    <span className="text-sm text-foreground leading-relaxed pt-1">{option.text}</span>
+                  </div>
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Social proof */}
+        <div className="flex items-center justify-center gap-4 mt-8 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1">
+            <span className="text-lavender">✓</span> 15.000+ mães
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="text-lavender">✓</span> 100% Natural
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="text-lavender">✓</span> Sem choro
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
