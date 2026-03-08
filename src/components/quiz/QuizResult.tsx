@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-mother-child.png";
+import moonStars from "@/assets/moon-stars.png";
 
 interface QuizResultProps {
   profile: "inseguro" | "agitado";
@@ -44,74 +44,122 @@ const QuizResult = ({ profile }: QuizResultProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="flex flex-col items-center px-5 py-8 max-w-lg mx-auto"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="flex flex-col items-center min-h-screen bg-background"
     >
-      <motion.div
-        className="text-5xl mb-4"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 200 }}
-      >
-        {data.emoji}
-      </motion.div>
-
-      <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground text-center mb-6 leading-tight">
-        {data.title}
-      </h2>
-
-      <div className="w-full bg-card rounded-2xl p-6 shadow-[var(--shadow-card)] border border-border mb-6">
-        <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-          {data.description.map((text, i) => (
-            <p key={i} className="whitespace-pre-line">{text}</p>
-          ))}
+      {/* Brand Header */}
+      <div className="w-full py-4 flex justify-center border-b border-border">
+        <div className="flex items-center gap-2">
+          <img src={moonStars} alt="Noite de Paz" className="w-8 h-8" />
+          <span className="text-sm font-bold tracking-wider uppercase text-lavender">
+            Noite de Paz™
+          </span>
         </div>
-
-        <p className="text-sm text-foreground font-medium mt-4 mb-2">{data.highlightIntro}</p>
-        <div className="space-y-2 mb-4">
-          {data.highlights.map((h, i) => (
-            <p key={i} className="text-sm text-foreground flex items-center gap-2">
-              <span className="text-gold">✨</span> {h}
-            </p>
-          ))}
-        </div>
-
-        <p className="text-sm text-muted-foreground leading-relaxed">{data.conclusion}</p>
       </div>
 
-      {/* Finalização padrão */}
-      <div className="w-full bg-lavender-soft rounded-2xl p-6 border border-border mb-8 text-center">
-        <p className="text-sm text-foreground leading-relaxed">
-          Independentemente do perfil, seu filho <strong>não precisa continuar sofrendo todas as noites.</strong>
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed mt-3">
-          Existe uma forma gentil, espiritual e comprovada de transformar a hora de dormir no momento mais acolhedor do dia.
-        </p>
-      </div>
-
-      {/* CTA */}
-      <div className="w-full bg-card rounded-2xl p-6 shadow-[var(--shadow-card)] border border-border text-center">
-        <p className="text-sm text-muted-foreground mb-2">
-          Você pode continuar enfrentando noites difíceis…
-        </p>
-        <p className="font-display text-lg font-bold text-foreground mb-6">
-          Ou pode transformar a hora de dormir<br />
-          no momento mais especial do dia. 🌙
-        </p>
-
-        <motion.a
-          href="#"
-          className="inline-block w-full py-4 px-8 rounded-full bg-primary text-primary-foreground font-bold text-lg shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] transition-all duration-300 text-center"
-          whileHover={{ y: -2, scale: 1.02 }}
-          whileTap={{ scale: 0.97 }}
+      <div className="w-full max-w-lg mx-auto px-5 pt-6 pb-8">
+        {/* Result badge */}
+        <motion.div
+          className="flex flex-col items-center mb-6"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 200 }}
         >
-          👉 QUERO TRANSFORMAR AS NOITES DO MEU FILHO
-        </motion.a>
+          <div className="w-20 h-20 rounded-full flex items-center justify-center text-4xl mb-3" style={{ background: "linear-gradient(135deg, hsl(270 35% 92%), hsl(270 40% 85%))" }}>
+            {data.emoji}
+          </div>
+          <span className="bg-lavender text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
+            Seu Diagnóstico
+          </span>
+        </motion.div>
 
-        <p className="text-xs text-muted-foreground mt-4">
-          🔒 Acesso imediato • Garantia de 7 dias • Pagamento seguro
-        </p>
+        <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground text-center mb-6 leading-tight">
+          {data.title}
+        </h2>
+
+        {/* Profile card */}
+        <motion.div
+          className="w-full bg-card rounded-2xl p-6 shadow-sm border border-border mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+            {data.description.map((text, i) => (
+              <p key={i} className="whitespace-pre-line">{text}</p>
+            ))}
+          </div>
+
+          <p className="text-sm text-foreground font-medium mt-5 mb-2">{data.highlightIntro}</p>
+          <div className="space-y-2 mb-4">
+            {data.highlights.map((h, i) => (
+              <p key={i} className="text-sm text-foreground flex items-center gap-2">
+                <span className="text-gold">✨</span> {h}
+              </p>
+            ))}
+          </div>
+
+          <p className="text-sm text-muted-foreground leading-relaxed">{data.conclusion}</p>
+        </motion.div>
+
+        {/* Emotional bridge */}
+        <motion.div
+          className="w-full bg-lavender-soft rounded-2xl p-6 border border-lavender/30 mb-6 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <p className="text-sm text-foreground leading-relaxed">
+            Independentemente do perfil, seu filho <strong>não precisa continuar sofrendo todas as noites.</strong>
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed mt-3">
+            Existe uma forma gentil, espiritual e comprovada de transformar a hora de dormir no momento mais acolhedor do dia.
+          </p>
+        </motion.div>
+
+        {/* CTA section */}
+        <motion.div
+          className="w-full bg-card rounded-2xl p-6 shadow-sm border border-border text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+        >
+          <p className="text-sm text-muted-foreground mb-2">
+            Você pode continuar enfrentando noites difíceis…
+          </p>
+          <p className="font-display text-xl font-bold text-foreground mb-6">
+            Ou pode transformar a hora de dormir<br />
+            no momento mais especial do dia. 🌙
+          </p>
+
+          <motion.a
+            href="#"
+            className="inline-block w-full py-5 px-8 rounded-2xl font-bold text-lg text-primary-foreground shadow-lg transition-all duration-300 text-center"
+            style={{ background: "linear-gradient(135deg, hsl(270 45% 40%), hsl(260 55% 55%))" }}
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            👉 QUERO TRANSFORMAR AS NOITES DO MEU FILHO
+          </motion.a>
+
+          <p className="text-xs text-muted-foreground mt-4">
+            🔒 Acesso imediato • Garantia de 7 dias • Pagamento seguro
+          </p>
+        </motion.div>
+
+        {/* Social proof */}
+        <div className="flex items-center justify-center gap-4 mt-6 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1">
+            <span className="text-lavender">✓</span> 15.000+ mães
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="text-lavender">✓</span> 100% Natural
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="text-lavender">✓</span> Sem choro
+          </span>
+        </div>
       </div>
     </motion.div>
   );
