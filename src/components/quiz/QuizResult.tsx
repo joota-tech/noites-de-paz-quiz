@@ -8,35 +8,34 @@ interface QuizResultProps {
 const profiles = {
   inseguro: {
     emoji: "🌙",
-    title: "Seu filho tem o perfil: Emocionalmente Inseguro",
-    subtitle: "Ele precisa sentir que está protegido para conseguir relaxar.",
+    title: "Seu filho precisa se sentir emocionalmente seguro para conseguir dormir em paz",
     description: [
-      "O seu filho demonstra sinais de insegurança emocional na hora de dormir. Isso significa que ele precisa sentir — no fundo do coração — que está seguro, amado e protegido para conseguir fechar os olhos em paz.",
-      "Crianças com esse perfil costumam ter medo do escuro, pedir para os pais ficarem por perto, precisar de contato físico para dormir e demonstrar sensibilidade emocional à noite.",
-      "Isso não é \"frescura\". É o coração dele pedindo acolhimento.",
+      "Seu filho não faz birra por mal.\nEle sente medo. Insegurança. Necessidade de proteção.",
+      "Crianças emocionalmente sensíveis precisam sentir que estão seguras — por dentro e por fora — antes de relaxar.",
     ],
-    needs: [
-      "Rituais noturnos que transmitam proteção e presença de Deus",
-      "Histórias suaves que falem de anjos, segurança e amor divino",
-      "Um momento de conexão emocional antes de dormir",
-      "Previsibilidade e constância para se sentir seguro",
+    highlights: [
+      "o medo diminui",
+      "o corpo relaxa",
+      "o sono chega com mais facilidade",
     ],
+    highlightIntro: "Quando elas se sentem protegidas:",
+    conclusion: "A boa notícia é que isso pode ser desenvolvido com estímulos certos antes de dormir.",
   },
   agitado: {
     emoji: "🔥",
-    title: "Seu filho tem o perfil: Mentalmente Agitado",
-    subtitle: "A mente dele está acelerada demais para conseguir desacelerar sozinho.",
+    title: "Seu filho tem a mente acelerada e precisa aprender a desacelerar antes de dormir",
     description: [
-      "O seu filho demonstra sinais de agitação mental na hora de dormir. Isso significa que a mente dele fica \"ligada\" demais à noite e ele não consegue desacelerar por conta própria.",
-      "Crianças com esse perfil costumam demorar para dormir, inventar desculpas para sair da cama, ficar inquietas e ter dificuldade para relaxar o corpo e a mente.",
-      "Isso não é \"birra\". É o cérebro dele pedindo ajuda para desligar.",
+      "Seu filho não resiste ao sono por teimosia.",
+      "A mente dele continua em alerta, como se o dia ainda não tivesse terminado.",
+      "Crianças mentalmente agitadas precisam de transições suaves para reduzir o ritmo mental.",
     ],
-    needs: [
-      "Uma rotina previsível que sinalize ao corpo que é hora de descansar",
-      "Histórias curtas e calmantes que reduzam os estímulos mentais",
-      "Técnicas suaves de respiração e relaxamento integradas à fé",
-      "Transição gradual entre atividade e sono",
+    highlights: [
+      "o corpo entende que é hora de descansar",
+      "a ansiedade diminui",
+      "o sono acontece naturalmente",
     ],
+    highlightIntro: "Quando o cérebro desacelera:",
+    conclusion: "Com estímulos adequados, é possível ensinar o cérebro da criança a relaxar.",
   },
 };
 
@@ -58,52 +57,36 @@ const QuizResult = ({ profile }: QuizResultProps) => {
         {data.emoji}
       </motion.div>
 
-      <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground text-center mb-2 leading-tight">
+      <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground text-center mb-6 leading-tight">
         {data.title}
       </h2>
-
-      <p className="text-sm text-muted-foreground text-center mb-6 max-w-sm">
-        {data.subtitle}
-      </p>
 
       <div className="w-full bg-card rounded-2xl p-6 shadow-[var(--shadow-card)] border border-border mb-6">
         <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
           {data.description.map((text, i) => (
-            <p key={i}>{text}</p>
+            <p key={i} className="whitespace-pre-line">{text}</p>
           ))}
         </div>
-      </div>
 
-      <div className="w-full bg-lavender-soft rounded-2xl p-6 border border-border mb-8">
-        <h3 className="font-display text-lg font-bold text-foreground mb-4">
-          ✨ O que seu filho precisa:
-        </h3>
-        <ul className="space-y-3">
-          {data.needs.map((need, i) => (
-            <li key={i} className="flex items-start gap-2 text-sm text-foreground">
-              <span className="text-gold mt-0.5">✓</span>
-              <span>{need}</span>
-            </li>
+        <p className="text-sm text-foreground font-medium mt-4 mb-2">{data.highlightIntro}</p>
+        <div className="space-y-2 mb-4">
+          {data.highlights.map((h, i) => (
+            <p key={i} className="text-sm text-foreground flex items-center gap-2">
+              <span className="text-gold">✨</span> {h}
+            </p>
           ))}
-        </ul>
+        </div>
+
+        <p className="text-sm text-muted-foreground leading-relaxed">{data.conclusion}</p>
       </div>
 
-      {/* Transition to solution */}
-      <div className="text-center mb-8">
-        <img src={heroImage} alt="Mãe e filho" className="w-32 h-32 object-contain mx-auto mb-4" />
-        <p className="font-display text-xl font-bold text-foreground mb-3">
-          Mamãe, você não precisa enfrentar isso sozinha.
+      {/* Finalização padrão */}
+      <div className="w-full bg-lavender-soft rounded-2xl p-6 border border-border mb-8 text-center">
+        <p className="text-sm text-foreground leading-relaxed">
+          Independentemente do perfil, seu filho <strong>não precisa continuar sofrendo todas as noites.</strong>
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-sm mx-auto mb-4">
-          Existe um caminho gentil, espiritual e comprovado por outras mães
-          para transformar a hora de dormir no momento mais especial do dia
-          do seu filho.
-        </p>
-        <p className="text-sm text-foreground font-medium">
-          O <strong className="text-primary">Método Noites de Paz™</strong> foi criado
-          especialmente para crianças como o seu filho. Em apenas 15 minutos por noite,
-          com histórias suaves e cheias de fé, seu filho vai aprender a dormir
-          com calma, segurança e a presença de Deus.
+        <p className="text-sm text-muted-foreground leading-relaxed mt-3">
+          Existe uma forma gentil, espiritual e comprovada de transformar a hora de dormir no momento mais acolhedor do dia.
         </p>
       </div>
 
