@@ -28,10 +28,7 @@ const QuizNews = ({ onNext }: QuizNewsProps) => {
         {/* Red header bar */}
         <div className="bg-[hsl(0,72%,45%)] text-white flex items-center justify-between px-4 py-2.5">
           <div className="flex items-center gap-3">
-            <div className="flex flex-col leading-none">
-              <span className="text-xs font-bold opacity-70">≡ MENU</span>
-            </div>
-            <span className="text-2xl font-black tracking-tight">s1</span>
+            <span className="text-xs font-bold opacity-70">≡ MENU</span>
           </div>
           <span className="text-xs sm:text-sm font-bold uppercase tracking-wider">
             Especial Saúde Infantil
