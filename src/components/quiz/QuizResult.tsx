@@ -40,7 +40,7 @@ const profiles = {
   },
 };
 
-const QuizResult = ({ profile }: QuizResultProps) => {
+const QuizResult = ({ profile, onNext }: QuizResultProps) => {
   const data = profiles[profile];
 
   return (
