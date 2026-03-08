@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Check } from "lucide-react";
 import moonStars from "@/assets/moon-stars.png";
 import heroImage from "@/assets/hero-mother-child.png";
 import authorImage from "@/assets/author-daughter.png";
@@ -67,6 +68,17 @@ const faqItems = [
 
 const SalesPage = ({ profile }: SalesPageProps) => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [checkedItems, setCheckedItems] = useState<boolean[]>(Array(6).fill(false));
+
+  const toggleCheck = (index: number) => {
+    setCheckedItems(prev => {
+      const next = [...prev];
+      next[index] = !next[index];
+      return next;
+    });
+  };
+
+  const checkedCount = checkedItems.filter(Boolean).length;
 
   return (
     <motion.div
@@ -141,7 +153,7 @@ const SalesPage = ({ profile }: SalesPageProps) => {
             <h2 className="font-display text-2xl font-bold text-foreground text-center mb-6">
               Você se identifica com alguma dessas situações?
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {[
                 "Seu filho só dorme no colo, no peito ou com você do lado",
                 "Ele acorda várias vezes durante a noite chorando",
@@ -150,22 +162,48 @@ const SalesPage = ({ profile }: SalesPageProps) => {
                 "Já tentou de tudo e nada funcionou",
                 "Sente culpa por não conseguir resolver isso",
               ].map((item, i) => (
-                <motion.div
+                <motion.button
                   key={i}
-                  className="flex items-start gap-3 bg-background rounded-xl p-4 border border-border"
+                  onClick={() => toggleCheck(i)}
+                  className={`flex items-center gap-3 w-full bg-background rounded-xl p-4 border text-left transition-all duration-200 ${
+                    checkedItems[i]
+                      ? "border-lavender bg-lavender-soft"
+                      : "border-border hover:border-lavender/40"
+                  }`}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <span className="text-rose-warm text-lg mt-0.5">😩</span>
+                  <div
+                    className={`w-6 h-6 rounded-md border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
+                      checkedItems[i]
+                        ? "bg-lavender border-lavender"
+                        : "border-border"
+                    }`}
+                  >
+                    {checkedItems[i] && <Check className="w-4 h-4 text-primary-foreground" />}
+                  </div>
                   <p className="text-sm text-foreground">{item}</p>
-                </motion.div>
+                </motion.button>
               ))}
             </div>
-            <p className="text-center text-muted-foreground text-sm mt-6">
-              Se você marcou pelo menos <strong className="text-foreground">2 itens</strong>, o Método Noite de Paz foi feito para você.
-            </p>
+            <motion.p
+              className="text-center text-sm mt-6"
+              animate={{ scale: checkedCount >= 2 ? [1, 1.05, 1] : 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {checkedCount >= 2 ? (
+                <span className="text-lavender font-bold">
+                  ✨ Você marcou {checkedCount} itens — o Método Noite de Paz foi feito para você!
+                </span>
+              ) : (
+                <span className="text-muted-foreground">
+                  Se você marcar pelo menos <strong className="text-foreground">2 itens</strong>, o Método Noite de Paz foi feito para você.
+                </span>
+              )}
+            </motion.p>
           </motion.div>
         </div>
       </section>
