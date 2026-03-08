@@ -5,8 +5,9 @@ import QuizNews from "@/components/quiz/QuizNews";
 import QuizQuestions from "@/components/quiz/QuizQuestions";
 import QuizStorytelling from "@/components/quiz/QuizStorytelling";
 import QuizResult from "@/components/quiz/QuizResult";
+import SalesPage from "@/components/quiz/SalesPage";
 
-type Step = "intro" | "news" | "questions" | "storytelling" | "result";
+type Step = "intro" | "news" | "questions" | "storytelling" | "result" | "sales";
 
 const Index = () => {
   const [step, setStep] = useState<Step>("intro");
@@ -30,7 +31,8 @@ const Index = () => {
         {step === "news" && <QuizNews key="news" onNext={() => goTo("questions")} />}
         {step === "questions" && <QuizQuestions key="questions" onComplete={handleQuestionsComplete} />}
         {step === "storytelling" && <QuizStorytelling key="storytelling" onNext={() => goTo("result")} />}
-        {step === "result" && <QuizResult key="result" profile={profile} />}
+        {step === "result" && <QuizResult key="result" profile={profile} onNext={() => goTo("sales")} />}
+        {step === "sales" && <SalesPage key="sales" profile={profile} />}
       </AnimatePresence>
     </div>
   );

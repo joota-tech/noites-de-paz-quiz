@@ -3,6 +3,7 @@ import moonStars from "@/assets/moon-stars.png";
 
 interface QuizResultProps {
   profile: "inseguro" | "agitado";
+  onNext: () => void;
 }
 
 const profiles = {
@@ -39,7 +40,7 @@ const profiles = {
   },
 };
 
-const QuizResult = ({ profile }: QuizResultProps) => {
+const QuizResult = ({ profile, onNext }: QuizResultProps) => {
   const data = profiles[profile];
 
   return (
@@ -133,15 +134,15 @@ const QuizResult = ({ profile }: QuizResultProps) => {
             no momento mais especial do dia. 🌙
           </p>
 
-          <motion.a
-            href="#"
+          <motion.button
+            onClick={onNext}
             className="inline-block w-full py-5 px-8 rounded-2xl font-bold text-lg text-primary-foreground shadow-lg transition-all duration-300 text-center"
             style={{ background: "linear-gradient(135deg, hsl(270 45% 40%), hsl(260 55% 55%))" }}
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
           >
             👉 QUERO TRANSFORMAR AS NOITES DO MEU FILHO
-          </motion.a>
+          </motion.button>
 
           <p className="text-xs text-muted-foreground mt-4">
             🔒 Acesso imediato • Garantia de 7 dias • Pagamento seguro
