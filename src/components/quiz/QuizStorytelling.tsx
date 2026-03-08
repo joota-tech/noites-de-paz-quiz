@@ -32,6 +32,23 @@ const QuizStorytelling = ({ onNext }: QuizStorytellingProps) => {
         </span>
       </motion.div>
 
+      <motion.h3
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+        className="text-lg font-bold text-foreground"
+      >
+        Camila Rezende
+      </motion.h3>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="text-xs text-muted-foreground -mt-1"
+      >
+        Mãe, educadora e criadora do método Noite Encantada
+      </motion.p>
+
       <p className="text-xs font-semibold tracking-widest uppercase text-gold mb-2">
         ✨ A história por trás do método
       </p>
