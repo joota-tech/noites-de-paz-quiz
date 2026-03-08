@@ -57,52 +57,36 @@ const QuizResult = ({ profile }: QuizResultProps) => {
         {data.emoji}
       </motion.div>
 
-      <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground text-center mb-2 leading-tight">
+      <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground text-center mb-6 leading-tight">
         {data.title}
       </h2>
-
-      <p className="text-sm text-muted-foreground text-center mb-6 max-w-sm">
-        {data.subtitle}
-      </p>
 
       <div className="w-full bg-card rounded-2xl p-6 shadow-[var(--shadow-card)] border border-border mb-6">
         <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
           {data.description.map((text, i) => (
-            <p key={i}>{text}</p>
+            <p key={i} className="whitespace-pre-line">{text}</p>
           ))}
         </div>
-      </div>
 
-      <div className="w-full bg-lavender-soft rounded-2xl p-6 border border-border mb-8">
-        <h3 className="font-display text-lg font-bold text-foreground mb-4">
-          ✨ O que seu filho precisa:
-        </h3>
-        <ul className="space-y-3">
-          {data.needs.map((need, i) => (
-            <li key={i} className="flex items-start gap-2 text-sm text-foreground">
-              <span className="text-gold mt-0.5">✓</span>
-              <span>{need}</span>
-            </li>
+        <p className="text-sm text-foreground font-medium mt-4 mb-2">{data.highlightIntro}</p>
+        <div className="space-y-2 mb-4">
+          {data.highlights.map((h, i) => (
+            <p key={i} className="text-sm text-foreground flex items-center gap-2">
+              <span className="text-gold">✨</span> {h}
+            </p>
           ))}
-        </ul>
+        </div>
+
+        <p className="text-sm text-muted-foreground leading-relaxed">{data.conclusion}</p>
       </div>
 
-      {/* Transition to solution */}
-      <div className="text-center mb-8">
-        <img src={heroImage} alt="Mãe e filho" className="w-32 h-32 object-contain mx-auto mb-4" />
-        <p className="font-display text-xl font-bold text-foreground mb-3">
-          Mamãe, você não precisa enfrentar isso sozinha.
+      {/* Finalização padrão */}
+      <div className="w-full bg-lavender-soft rounded-2xl p-6 border border-border mb-8 text-center">
+        <p className="text-sm text-foreground leading-relaxed">
+          Independentemente do perfil, seu filho <strong>não precisa continuar sofrendo todas as noites.</strong>
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-sm mx-auto mb-4">
-          Existe um caminho gentil, espiritual e comprovado por outras mães
-          para transformar a hora de dormir no momento mais especial do dia
-          do seu filho.
-        </p>
-        <p className="text-sm text-foreground font-medium">
-          O <strong className="text-primary">Método Noites de Paz™</strong> foi criado
-          especialmente para crianças como o seu filho. Em apenas 15 minutos por noite,
-          com histórias suaves e cheias de fé, seu filho vai aprender a dormir
-          com calma, segurança e a presença de Deus.
+        <p className="text-sm text-muted-foreground leading-relaxed mt-3">
+          Existe uma forma gentil, espiritual e comprovada de transformar a hora de dormir no momento mais acolhedor do dia.
         </p>
       </div>
 

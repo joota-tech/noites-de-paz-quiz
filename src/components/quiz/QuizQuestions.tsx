@@ -75,7 +75,8 @@ const QuizQuestions = ({ onComplete }: QuizQuestionsProps) => {
       setTimeout(() => setCurrentQuestion(currentQuestion + 1), 400);
     } else {
       const inseguroCount = newAnswers.filter((a) => a === "inseguro").length;
-      const result = inseguroCount >= 3 ? "inseguro" : "agitado";
+      const agitadoCount = newAnswers.filter((a) => a === "agitado").length;
+      const result = inseguroCount >= agitadoCount ? "inseguro" : "agitado";
       setTimeout(() => onComplete(result), 400);
     }
   };
