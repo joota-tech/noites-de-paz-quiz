@@ -68,6 +68,17 @@ const faqItems = [
 
 const SalesPage = ({ profile }: SalesPageProps) => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [checkedItems, setCheckedItems] = useState<boolean[]>(Array(6).fill(false));
+
+  const toggleCheck = (index: number) => {
+    setCheckedItems(prev => {
+      const next = [...prev];
+      next[index] = !next[index];
+      return next;
+    });
+  };
+
+  const checkedCount = checkedItems.filter(Boolean).length;
 
   return (
     <motion.div
