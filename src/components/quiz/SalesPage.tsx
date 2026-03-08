@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Check } from "lucide-react";
 import moonStars from "@/assets/moon-stars.png";
 import heroImage from "@/assets/hero-mother-child.png";
 import authorImage from "@/assets/author-daughter.png";
